@@ -9,8 +9,8 @@ import (
 )
 
 type DailyRevenue struct {
-	Day     int     `json:"day"`
-	Revenue float64 `json:"revenue"`
+	Dia   int     `json:"dia"`
+	Valor float64 `json:"valor"`
 }
 
 type RevenueByState struct {
@@ -76,7 +76,7 @@ func isFibonacci() {
 // dailyRevenue reads a JSON file containing daily revenues and calculates the minimum, maximum, and average revenue.
 func dailyRevenue() {
 	println("#3 - Daily Revenue")
-	file, err := os.Open("revenue.json")
+	file, err := os.Open("dados.json")
 	if err != nil {
 		log.Fatalf("failed to open file: %s", err)
 	}
@@ -97,8 +97,8 @@ func dailyRevenue() {
 
 	var validRevenues []float64
 	for _, r := range dailyRevenues {
-		if r.Revenue >= 0 {
-			validRevenues = append(validRevenues, r.Revenue)
+		if r.Valor > 0 {
+			validRevenues = append(validRevenues, r.Valor)
 		}
 	}
 
